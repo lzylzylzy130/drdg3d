@@ -3,23 +3,23 @@ SetFactory("OpenCASCADE");
 
 faultsize = 1;///1.0/Sqrt(3)*2.0;
 
-Point(1) = {0, -25, 0, faultsize};
+Point(1) = {0, -35, 0, faultsize};
 Point(2) = {0, 5, 0, faultsize};
 Point(3) = {0, 5, -20, faultsize};
-Point(4) = {0, -25, -20, faultsize};
+Point(4) = {0, -35, -20, faultsize};
 
-Point(5) = {4, -5, 0, faultsize};
-Point(6) = {4, 25, 0, faultsize};
-Point(7) = {4, 25, -20, faultsize};
-Point(8) = {4, -5, -20, faultsize};
+Point(5) = {5, -5, 0, faultsize};
+Point(6) = {5, 35, 0, faultsize};
+Point(7) = {5, 35, -20, faultsize};
+Point(8) = {5, -5, -20, faultsize};
 
 Point(9) = {0, -5, 0, faultsize};
-Point(10) = {4, 5, 0, faultsize};
+Point(10) = {5, 5, 0, faultsize};
 
-Point(11) = {0, -5, -10, faultsize};
-Point(12) = {4, 5, -10, faultsize};
-Point(13) = {0, 5, -10, faultsize};
-Point(14) = {4, -5, -10, faultsize};
+Point(11) = {0, -5, -2, faultsize};
+Point(12) = {5, 5, -2, faultsize};
+Point(13) = {0, 5, -2, faultsize};
+Point(14) = {5, -5, -2, faultsize};
 
 
 Line(13) = {1, 9};
@@ -60,10 +60,26 @@ Plane Surface(11) = {11};
 Plane Surface(12) = {12};
 Plane Surface(13) = {13};
 
+Point(21) = {0, -23.5, -8.5, faultsize};
+Point(22) = {0, -26.5, -8.5, faultsize};
+Point(23) = {0, -26.5, -11.5, faultsize};
+Point(24) = {0, -23.5, -11.5, faultsize};
 
-Box(1) = {-30, -40, -40, 60, 80, 40};
+Line(51) = {21, 22};
+Line(52) = {22, 23};
+Line(53) = {23, 24};
+Line(54) = {24, 21};
+
+Curve Loop(41) = {51, 52, 53, 54};
+
+Plane Surface(41) = {41};
+
+BooleanFragments{ Surface{7}; Delete; }{ Surface{41}; Delete; }
+
+Box(1) = {-50, -60, -60, 100, 120, 60};
 
 //+
+BooleanFragments{ Volume{1}; Delete; }{ Surface{41}; Delete; }
 BooleanFragments{ Volume{1}; Delete; }{ Surface{7}; Delete; }
 BooleanFragments{ Volume{1}; Delete; }{ Surface{8}; Delete; }
 BooleanFragments{ Volume{1}; Delete; }{ Surface{9}; Delete; }
@@ -90,7 +106,7 @@ BooleanFragments{ Volume{1}; Delete; }{ Surface{12}; Delete; }
 //Line(33) = {101, 102};
 //Line(34) = {103, 104};
 //Line(35) = {105, 106};
-Line{40, 42, 43, 44} In Surface{16};
+Line{33, 52, 50, 27, 51, 53} In Surface{45};
 //+
 //MeshSize {15, 16, 19, 20, 17, 18, 13, 14} = 40/Sqrt(3.0)*2.0;
 
