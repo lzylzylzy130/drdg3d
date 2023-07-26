@@ -1,25 +1,16 @@
 
 ########################################################
 # modify it for different environment
-#ENV := sugon
 ENV := mbp
 #ENV := cascadia
 #ENV := narval
 #ENV := beluga
-
-#TPV22 := ON
 
 #compiler := intel
 compiler := gnu
 
 # modify it for different order of accuracy
 pOrder := 2
-
-DFLAG_LIST := TPV22
-DFLAGS := $(foreach flag,$(DFLAG_LIST),$(if $($(flag)),-D$(flag),)) $(DFLAGS)
-DFLAGS := $(strip $(DFLAGS))
-
-
 ########################################################
 
 EXE  := exe_solver
@@ -37,37 +28,22 @@ EXE2 := $(BINDIR)/$(EXE2)
 
 ifeq "$(compiler)" "intel"
 #FC := mpif90 -warn all -O3 -cpp -DpOrder=$(pOrder) -module $(OBJDIR)
-FC := mpif90 -O3 -cpp -DpOrder=$(pOrder) -module $(OBJDIR) $(DFLAGS)
+FC := mpif90 -O3 -cpp -DpOrder=$(pOrder) -module $(OBJDIR)
 endif
 ifeq "$(compiler)" "gnu"
-FC := mpif90 -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR) $(DFLAGS)
-#FC := mpif90 -Wall -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR)
+FC := mpif90 -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR)
+FC := mpif90 -Wall -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR)
 endif
 
 #FC := $(FC) -DTW
 
-ifeq "$(ENV)" "sugon"
-######################################################
-### for SUGON
-#NETCDF_DIR := /public/software/mathlib/netcdf/intel/4.7.4
-NETCDF_DIR := /public/software/mathlib/netcdf/intel/4.4.1
-LAPACK_DIR := /public/software/mathlib/lapack/intel/3.10.0
-LDFLAGS := -L $(LAPACK_DIR)/lib -llapack -lblas -L $(NETCDF_DIR)/lib -lnetcdff -lgfortran
-#LDFLAGS := -llapack -L $(NETCDF_DIR)/lib -lnetcdff
-#LDFLAGS := -lblas -llapack -L /usr/local/lib /usr/local/lib/libnetcdf.a /usr/local/lib/libnetcdff.a
-#LDFLAGS := -L . -llapack -lrefblas 
-INC := -I $(NETCDF_DIR)/include
-endif
-
 ifeq "$(ENV)" "mbp"
 ######################################################
 ### for MacBook Pro
-NETCDF_DIR := /opt/homebrew/Cellar/netcdf-fortran/4.6.0_1
-#LDFLAGS := -lblas -llapack -L $(NETCDF_DIR)/lib -lnetcdff
-#LDFLAGS := -L/usr/local/opt/openblas/lib -L/usr/local/opt/lapack/lib -L$(NETCDF_DIR)/lib -lnetcdff
-LDFLAGS := -L/opt/homebrew/Cellar/openblas/0.3.23/lib -L/opt/homebrew/Cellar/lapack/3.11/lib -L$(NETCDF_DIR)/lib -L/opt/homebrew/Cellar/netcdf-fortran/4.6.0_1 -lnetcdff -lblas
+NETCDF_DIR := /usr/local
+LDFLAGS := -lblas -llapack -L $(NETCDF_DIR)/lib -lnetcdff
 #LDFLAGS := -lblas -llapack -L /usr/local/lib /usr/local/lib/libnetcdf.a /usr/local/lib/libnetcdff.a
-#LDFLAGS := -L . -llapack -lrefblas
+#LDFLAGS := -L . -llapack -lrefblas 
 INC := -I $(NETCDF_DIR)/include
 endif
 
@@ -103,9 +79,10 @@ SRC_SOLVER :=               \
        yaml.F90             \
        yaml_settings.F90    \
        mod_para.F90         \
+       mod_mpi.F90          \
        mod_vtk.F90          \
        mod_math.F90         \
-       mod_mpi.F90          \
+       mod_interp.F90       \
        mod_read.F90         \
        mod_matrix.F90       \
        mod_nodes.F90        \
@@ -125,9 +102,11 @@ SRC_SOLVER :=               \
        mod_fault.F90        \
        mod_exchange.F90     \
        mod_rk.F90           \
+       mod_energy.F90       \
        mod_io_fault.F90     \
        mod_io_grdsurf.F90   \
        mod_io_recv.F90      \
+       mod_io_energy.F90    \
        mod_recv.F90         \
        mod_check.F90        \
        seis3d.F90
@@ -137,9 +116,11 @@ OBJS_SOLVER := $(foreach file,$(SRC_SOLVER),$(OBJDIR)/$(file:.F90=.o))
 
 .PHONY: all
 
-all: solver tool
+all: dir solver tool
 
 # Target
+dir:
+	mkdir -p bin obj
 solver: $(EXE)
 tool: $(EXE1) $(EXE2)
 
