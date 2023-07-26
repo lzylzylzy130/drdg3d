@@ -1,17 +1,17 @@
 //+
 SetFactory("OpenCASCADE");
 
-faultsize = 0.3;///0.3   1.0/Sqrt(3)*2.0;
+faultsize = 1;///0.3   1.0/Sqrt(3)*2.0;
 
 Point(1) = {0, -35, 0, faultsize};
 Point(2) = {0, 5, 0, faultsize};
 Point(3) = {0, 5, -20, faultsize};
 Point(4) = {0, -35, -20, faultsize};
 
-Point(5) = {5, -5, 0, faultsize};
-Point(6) = {5, 35, 0, faultsize};
-Point(7) = {5, 35, -20, faultsize};
-Point(8) = {5, -5, -20, faultsize};
+Point(5) = {1.5, -5, 0, faultsize};
+Point(6) = {1.5, 35, 0, faultsize};
+Point(7) = {1.5, 35, -20, faultsize};
+Point(8) = {1.5, -5, -20, faultsize};
 
 Line(13) = {1, 2};
 Line(14) = {2, 3};
@@ -26,7 +26,7 @@ Plane Surface(7) = {7};
 Curve Loop(8) = {17, 18, 19, 20};
 Plane Surface(8) = {8};
 
-Box(1) = {-40, -50, -50, 80, 100, 50};
+Box(1) = {-40, -50, -50, 80, 110, 50};
 
 //+
 BooleanFragments{ Volume{1}; Delete; }{ Surface{7}; Delete; }
@@ -54,5 +54,4 @@ Line{30, 17} In Surface{11};
 //MeshSize {15, 16, 19, 20, 17, 18, 13, 14} = 40/Sqrt(3.0)*2.0;
 
 
-Mesh.Algorithm = 6; // Frontal-Delaunay for 2D meshes//+
-
+Mesh.Algorithm = 6; // Frontal-Delaunay for 2D meshes
