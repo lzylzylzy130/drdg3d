@@ -1,8 +1,8 @@
 function part = metis_part(elem,np,metis_dir)
 
 if nargin < 3
-    metis_dir = '/usr/local/bin';
-    metis_dir = '/home/wzhang/spack/opt/spack/linux-ubuntu20.04-cascadelake/gcc-9.4.0/metis-5.1.0-g3hkcjmmfvljvil6u6okitnlxozpw3mn/bin';
+    metis_dir = '/opt/homebrew/Cellar/metis/5.1.0/bin';
+    % metis_dir = '/home/wzhang/spack/opt/spack/linux-ubuntu20.04-cascadelake/gcc-9.4.0/metis-5.1.0-g3hkcjmmfvljvil6u6okitnlxozpw3mn/bin';
 end
 
 metis_version = 5; % choose metis version 4 or 5
@@ -43,17 +43,23 @@ if (metis_version == 4)
 elseif (metis_version == 5)
     %metis_dir = '/usr/local/bin';
     %metis_dir = '/home/wzhang/spack/opt/spack/linux-ubuntu20.04-cascadelake/gcc-9.4.0/metis-5.1.0-g3hkcjmmfvljvil6u6okitnlxozpw3mn/bin';
+    metis_dir = '/opt/homebrew/Cellar/metis/5.1.0/bin';
 
-    exe = strtrim(fileread('../../path.m2gmetis'));
-    %cmd = sprintf('%s/m2gmetis tmp.met tmp.met.dgraph',metis_dir);
-    cmd = sprintf('%s tmp.met tmp.met.dgraph',exe);
-    disp(cmd);
+    % exe = strtrim(fileread('../../path.m2gmetis'));
+    % %cmd = sprintf('%s/m2gmetis tmp.met tmp.met.dgraph',metis_dir);
+    % cmd = sprintf('%s tmp.met tmp.met.dgraph',exe);
+    % disp(cmd);
+    % system(cmd);
+    % 
+    % exe = strtrim(fileread('../../path.gpmetis'));
+    % %cmd = sprintf('%s/gpmetis tmp.met.dgraph %d',mesh_dir,np);
+    % cmd = sprintf('%s tmp.met.dgraph %d',exe,np);
+    % disp(cmd);
+    % system(cmd);
+    
+    cmd = sprintf('%s/m2gmetis tmp.met tmp.met.dgraph',metis_dir);
     system(cmd);
-
-    exe = strtrim(fileread('../../path.gpmetis'));
-    %cmd = sprintf('%s/gpmetis tmp.met.dgraph %d',mesh_dir,np);
-    cmd = sprintf('%s tmp.met.dgraph %d',exe,np);
-    disp(cmd);
+    cmd = sprintf('%s/gpmetis tmp.met.dgraph %d',metis_dir,np);
     system(cmd);
 
     part = load(['tmp.met.dgraph.part.',num2str(np)]);
