@@ -9,9 +9,12 @@ fnm_out = 'mesh.nc';
 
 %% check the tet_id, surf_id
 % use: check_surface_id(fnm_in,surf_id);
-tet_id = 29;
-faultsurf_id = [21, 28];
-freesurf_id = 24;
+% tet_id = 29;
+% faultsurf_id = [21, 28];
+% freesurf_id = 24;
+tet_id = 52;
+faultsurf_id = [46, 47, 48, 50, 51];
+freesurf_id = [41, 45];
 msh = build_mesh(fnm_in,tet_id,faultsurf_id,freesurf_id);
 
 %% write mesh.nc
