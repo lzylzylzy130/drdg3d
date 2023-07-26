@@ -1,7 +1,7 @@
 //+
 SetFactory("OpenCASCADE");
 
-faultsize = 1;///1.0/Sqrt(3)*2.0;
+faultsize = 0.5;///1.0/Sqrt(3)*2.0;
 
 Point(1) = {0, -35, 0, faultsize};
 Point(2) = {0, 5, 0, faultsize};
