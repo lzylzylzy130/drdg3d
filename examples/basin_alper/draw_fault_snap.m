@@ -12,7 +12,7 @@ data_dir_c = strrep(data_dir, '_', '-');
 % varnm = 'rate';
 %varnm = 'slip';
 % varnm = 'sigma';
-varnm = 'stress';
+varnm = 'tau';
 
 
 x = gather_fault_var( data_dir, nproc, 'x' );
