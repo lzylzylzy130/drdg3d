@@ -12,11 +12,11 @@ data_dir = par.data_dir;
 
 % varnm = 'rate';
 %varnm = 'slip';
-varnm = 'stress';
+varnm = 'tau';
 %varnm = 'sigma';
 
 x0 = 5; % on the fault surface
-y0 = 6;
+y0 = -4.5;
 z0 = -0.8;
 %z0 = 0;
 
