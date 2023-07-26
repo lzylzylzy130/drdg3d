@@ -95,8 +95,8 @@ for ief = 1:nfault_elem
                 tu = mu_s1*(abs(stress0_bak1(1,1)));
                 tf = mu_d1*(abs(stress0_bak1(1,1)));
                 
-                Te = 0.45;
-                % Te = 0.55;
+                % Te = 0.45;
+                Te = 0.55;
                 stress0_bak1(2,1) = -(Te*(tu-tf)+tf);
                 
                 if abs(y+25)<1.5 && abs(z+10)<1.5

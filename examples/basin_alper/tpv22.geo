@@ -8,18 +8,18 @@ Point(2) = {0, 5, 0, faultsize};
 Point(3) = {0, 5, -20, faultsize};
 Point(4) = {0, -35, -20, faultsize};
 
-Point(5) = {5, -5, 0, faultsize};
-Point(6) = {5, 35, 0, faultsize};
-Point(7) = {5, 35, -20, faultsize};
-Point(8) = {5, -5, -20, faultsize};
+Point(5) = {5, 5, 0, faultsize};
+Point(6) = {5, 45, 0, faultsize};
+Point(7) = {5, 45, -20, faultsize};
+Point(8) = {5, 5, -20, faultsize};
 
 Point(9) = {0, -5, 0, faultsize};
-Point(10) = {5, 5, 0, faultsize};
+Point(10) = {5, 15, 0, faultsize};
 
 Point(11) = {0, -5, -2, faultsize};
-Point(12) = {5, 5, -2, faultsize};
+Point(12) = {5, 15, -2, faultsize};
 Point(13) = {0, 5, -2, faultsize};
-Point(14) = {5, -5, -2, faultsize};
+Point(14) = {5, 5, -2, faultsize};
 
 
 Line(13) = {1, 9};

@@ -13,7 +13,7 @@ cfl_number : 0.5
 # mesh dir
 mesh_dir : data
 # output dir
-data_dir : data_w5km_l10km_g10km
+data_dir : data_w5km_l10km_g0km_500m
 
 # snapshot output: skip every N steps
 fault_snap_skip   : 10

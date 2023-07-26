@@ -22,7 +22,7 @@ y = y(:,idx);
 z = z(:,idx);
 t = t(:,idx);
 
-if 0
+if 1
 tri = get_face_connect(x);
 figure
 tricontour(tri,y(:),z(:),t(:),0:0.5:100,'r')
