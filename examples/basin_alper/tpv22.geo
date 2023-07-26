@@ -74,7 +74,7 @@ Curve Loop(41) = {51, 52, 53, 54};
 
 Plane Surface(41) = {41};
 
-BooleanFragments{ Surface{7}; Delete; }{ Surface{41}; Delete; }
+//BooleanFragments{ Surface{7}; Delete; }{ Surface{41}; Delete; }
 
 Box(1) = {-50, -60, -60, 100, 120, 60};
 
@@ -106,7 +106,9 @@ BooleanFragments{ Volume{1}; Delete; }{ Surface{12}; Delete; }
 //Line(33) = {101, 102};
 //Line(34) = {103, 104};
 //Line(35) = {105, 106};
-Line{33, 52, 50, 27, 51, 53} In Surface{45};
+
+//Line{33, 52, 50, 27, 51, 53} In Surface{16};
+
 //+
 //MeshSize {15, 16, 19, 20, 17, 18, 13, 14} = 40/Sqrt(3.0)*2.0;
 
