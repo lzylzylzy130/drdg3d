@@ -41,7 +41,7 @@ FC := mpif90 -O3 -cpp -DpOrder=$(pOrder) -module $(OBJDIR) $(DFLAGS)
 endif
 ifeq "$(compiler)" "gnu"
 FC := mpif90 -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR) $(DFLAGS)
-#FC := mpif90 -Wall -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR)
+FC := mpif90 -Wall -O3 -cpp -DpOrder=$(pOrder) -J$(OBJDIR)
 endif
 
 #FC := $(FC) -DTW
@@ -103,9 +103,10 @@ SRC_SOLVER :=               \
        yaml.F90             \
        yaml_settings.F90    \
        mod_para.F90         \
+       mod_mpi.F90          \
        mod_vtk.F90          \
        mod_math.F90         \
-       mod_mpi.F90          \
+       mod_interp.F90       \
        mod_read.F90         \
        mod_matrix.F90       \
        mod_nodes.F90        \
@@ -125,9 +126,11 @@ SRC_SOLVER :=               \
        mod_fault.F90        \
        mod_exchange.F90     \
        mod_rk.F90           \
+       mod_energy.F90       \
        mod_io_fault.F90     \
        mod_io_grdsurf.F90   \
        mod_io_recv.F90      \
+       mod_io_energy.F90    \
        mod_recv.F90         \
        mod_check.F90        \
        seis3d.F90
@@ -137,9 +140,11 @@ OBJS_SOLVER := $(foreach file,$(SRC_SOLVER),$(OBJDIR)/$(file:.F90=.o))
 
 .PHONY: all
 
-all: solver tool
+all: dir solver tool
 
 # Target
+dir:
+	mkdir -p bin obj
 solver: $(EXE)
 tool: $(EXE1) $(EXE2)
 
