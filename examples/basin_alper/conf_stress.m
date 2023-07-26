@@ -100,7 +100,7 @@ for ief = 1:nfault_elem
                 stress0_bak1(2,1) = -(Te*(tu-tf)+tf);
                 
                 if abs(y+25)<1.5 && abs(z+10)<1.5
-                    stress0_bak1(2,1) = -tu - 1;
+                    stress0_bak1(2,1) = -tu - (tu-tf)*0.005;
                 end
 
                 traction0 = stress0_bak1 * vec_n;
