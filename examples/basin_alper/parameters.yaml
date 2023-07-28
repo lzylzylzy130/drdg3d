@@ -3,7 +3,7 @@
 # in YAML format
 
 # number of processors
-nproc : 6
+nproc : 128
 # simulation time length (in seconds)
 simu_time_max : 20.0
 
@@ -13,7 +13,7 @@ cfl_number : 0.5
 # mesh dir
 mesh_dir : data
 # output dir
-data_dir : data_w5km_l10km_g0km_500m
+data_dir : data
 
 # snapshot output: skip every N steps
 fault_snap_skip   : 10

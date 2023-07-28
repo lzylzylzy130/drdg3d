@@ -79,6 +79,20 @@ if 1 % g=0km
     rho(idx) = 2.67/1.2;
 end
 
+if 0 % g=0km with gap
+    idxall = NaN(size(xc));
+    for i = 1:length(xc)
+        if yc(i)>2*xc(i)-5 && yc(i)<2*xc(i)+5 ...
+            && abs(xc(i)-2.5)<2 && abs(zc(i))<2
+            idxall(i) = i;
+        end
+    end
+    idx = idxall(~isnan(idxall));
+    vp(idx) = 6/1.6;
+    vs(idx) = 3.464/1.6;
+    rho(idx) = 2.67/1.2;
+end
+
 netcdf.putVar(ncid,var1,rho);
 netcdf.putVar(ncid,var2,vp);
 netcdf.putVar(ncid,var3,vs);
