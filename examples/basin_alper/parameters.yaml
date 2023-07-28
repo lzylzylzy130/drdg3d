@@ -3,7 +3,7 @@
 # in YAML format
 
 # number of processors
-nproc : 128
+nproc : 256
 # simulation time length (in seconds)
 simu_time_max : 20.0
 

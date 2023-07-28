@@ -44,7 +44,7 @@ writerObj=VideoWriter('test.mp4', 'MPEG-4');  %// 定义一个视频文件用来
 writerObj.FrameRate = 11.36;
 open(writerObj);                    %// 打开该视频文件
 
-step = 1;
+step = 20;
 
 for it =    1 : step : step*ceil(length(time)/step)
 

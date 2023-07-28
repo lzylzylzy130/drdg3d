@@ -65,7 +65,7 @@ subroutine energy_io_init(mesh)
 
   if (mesh%rank .ne. 0) return
 
-  write(filename,*) trim(data_dir),'/energy.nc'
+  write(filename,'(a,a)') trim(data_dir),'/energy.nc'
 
   ! start to create
   ierr = nf90_create(filename, NF90_CLOBBER, en_ncid)
