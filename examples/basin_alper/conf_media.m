@@ -41,7 +41,7 @@ rho(idx) = 2.67/1.2;
 end
 
 if 0 % g=10km
-    idxx = find(abs(xc-4)<4);
+    idxx = find(abs(xc-3)<3);
     idxy = find(abs(yc)<5);
     idxz = find(abs(zc)<2);
 
