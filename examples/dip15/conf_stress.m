@@ -68,7 +68,7 @@ mu_d1 = 0.5;
 C01 = 0;
 Dc1 = 0.5;
 
-dip_angle = 15;
+dip_angle = 60;
 vec_x0 = [1,0,0];
 vec_y0 = [0,1,0];
 vec_z0 = [0,0,1];
@@ -100,8 +100,8 @@ for ie = 1:nelem
                 z = node(3,elem(j,ie));
 
                 T1 = stress0_bak;
-                if (abs(yc-0)<=1.5 && ...
-                        abs(zc+7.5*sind(dip_angle))<=1.5*sind(dip_angle))
+                if (abs(yc-0)<=0.5 && ...
+                        abs(zc+2.5*sind(dip_angle))<=0.5*sind(dip_angle))
                     T1 = stress0_asp;
                 end
 

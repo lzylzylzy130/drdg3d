@@ -56,7 +56,7 @@ BooleanFragments{ Surface{1}; Delete; }{ Surface{2,3,4}; Delete; }
 Box(1) = {-100, -100, -100, 200, 200, 100};
 
 // set size at domain boundary
-MeshSize {17, 18, 19, 20, 21, 22, 23, 24} = lc;
+MeshSize {17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28} = lc;
 
 BooleanFragments{ Volume{1}; Delete; }{ Surface{2,3,4,5}; Delete; }
 

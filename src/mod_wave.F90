@@ -1731,10 +1731,17 @@ subroutine time_weakening(y,z,y0,z0,rcrit,Vr,t0,cur_time,slip,Dc,mu_s,mu_d,mu_f)
 
   dist = sqrt( (y-y0)**2 + (z-z0)**2 )
   if(dist<rcrit) then
-    T=dist/Vr+0.081*rcrit/Vr*(1./(1.-(dist/rcrit)**2)-1.)
+    T = dist/Vr+0.081*rcrit/Vr*(1./(1.-(dist/rcrit)**2)-1.)
   else
     T = 1.0e9
   endif
+
+  ! ! if legacy TW, (?)
+  ! if(dist<rcrit) then
+  !   T = dist/v_force
+  ! else
+  !   T = 1.0e9
+  ! endif
 
   if(slip<Dc) then
     f1 = slip/Dc

@@ -8,10 +8,10 @@ par = ReadYaml('parameters.yaml');
 nproc = par.nproc;
 data_dir = par.data_dir;
 
-varnm = 'rate';
+% varnm = 'rate';
 %varnm = 'slip';
 %varnm = 'sigma';
-%varnm = 'stress';
+varnm = 'tau';
 
 
 x = gather_fault_var( data_dir, nproc, 'x' );

@@ -3,9 +3,9 @@
 # in YAML format
 
 # number of processors
-nproc : 32
+nproc : 4
 # simulation time length (in seconds)
-simu_time_max : 12.0
+simu_time_max : 5.0
 
 # CFL number (<0.5)
 cfl_number : 0.4
