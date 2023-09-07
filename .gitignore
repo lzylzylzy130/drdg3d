@@ -17,3 +17,6 @@ data/
 data_*/
 *.tmp
 path.*
+*.mp4
+*.svg
+*.png

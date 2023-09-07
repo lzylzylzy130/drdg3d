@@ -79,9 +79,9 @@ vec_z0 = [0,0,1];
 vec_n0 = [sind(dip_angle),0,cosd(dip_angle)];
 vec_m0 = [0,1,0];
 vec_l0 = cross(vec_n0,vec_m0);
-stress0_bak0 = [-120,0,68;
+stress0_bak0 = [-120,0,72;
     0,0,0;
-    68,0,0];
+    72,0,0];
 stress0_bak = rotate_tensor(vec_n0,vec_m0,vec_l0,vec_x0,vec_y0,vec_z0,stress0_bak0);
 stress0_asp0 = [-120,0,81.6;
     0,0,0;
@@ -230,8 +230,8 @@ rho = 2.67;
 vs = 3.464;
 mu = rho*vs^2;
 
-Dc00 = Dc1/(Ra*(Tu/mu));
 Te00 = Te/Tu;
+Dc00 = Dc1/(Ra*(Tu/mu));
 disp(['Dc = ', num2str(Dc00)])
 disp(['Te = ', num2str(Te00)])
 
